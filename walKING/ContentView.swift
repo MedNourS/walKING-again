@@ -11,8 +11,8 @@ import CoreData
 struct ContentView: View {
     var body: some View {
         TabView {
-            StatisticsView()
-                .tabItem {
+            StatisticsView(viewModel: MapViewModel())
+                .tabItem {			
                     Image(systemName: "chart.bar")
                     Text("Statistics")
                 }

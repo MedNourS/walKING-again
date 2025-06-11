@@ -5,9 +5,10 @@ import Foundation
 import CoreLocation
 import CoreData
 
-struct GridCell: Hashable, Codable {
+struct GridCell: Hashable, Codable, Identifiable {
     let x: Int
     let y: Int
+	var id: String { "\(x)_\(y)" }
 }
 
 struct ExploredCellVisit: Hashable, Codable {
@@ -26,8 +27,8 @@ extension ExploredCellVisit {
 class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var exploredCells: Set<GridCell> = []
     @Published var cellVisitHistory: [GridCell: [Date]] = [:]
-    private let cellSize: Double = 0.0005
-    private var center: CLLocationCoordinate2D?
+    public let cellSize: Double = 0.0005
+    public var center: CLLocationCoordinate2D?
     private let locationManager: CLLocationManager?
     private let context: NSManagedObjectContext
     private let enableLocation: Bool
@@ -35,22 +36,23 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     init(context: NSManagedObjectContext = PersistenceController.shared.container.viewContext, enableLocation: Bool = true) {
         self.context = context
         self.enableLocation = enableLocation
-        if enableLocation {
-            self.locationManager = CLLocationManager()
-        } else {
-            self.locationManager = nil
-        }
+		//if enableLocation {
+				//    self.locationManager = CLLocationManager()
+				//} else {
+				//    self.locationManager = nil
+				//}
+		self.locationManager = nil
         super.init()
         loadData()
-        if enableLocation, let locationManager = locationManager {
-            locationManager.delegate = self
-            locationManager.requestAlwaysAuthorization()
-            #if os(iOS)
-            locationManager.allowsBackgroundLocationUpdates = true
-            #endif
-            locationManager.pausesLocationUpdatesAutomatically = false
-            locationManager.startUpdatingLocation()
-        }
+        //if enableLocation, let locationManager = locationManager {
+        //    locationManager.delegate = self
+        //    locationManager.requestAlwaysAuthorization()
+        //    #if os(iOS)
+        //    locationManager.allowsBackgroundLocationUpdates = true
+        //    #endif
+        //    locationManager.pausesLocationUpdatesAutomatically = false
+        //    locationManager.startUpdatingLocation()
+        //}
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

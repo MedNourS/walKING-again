@@ -115,10 +115,7 @@ struct StatisticsView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Area Discovered Per Day")
-                .font(.headline)
-
+        VStack(alignment: .leading, spacing: 16) {	
             // Calendar date picker
             DatePicker(
                 "Select Day",

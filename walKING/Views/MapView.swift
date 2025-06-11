@@ -23,17 +23,18 @@ struct MapView: View {
 
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $region, annotationItems: Array(viewModel.exploredCells)) { cell in
-                // Convert your grid cell to a coordinate
-                let coord = viewModel.coordinate(for: cell)
-                MapAnnotation(coordinate: coord) {
-                    Rectangle()
-                        .fill(Color.green.opacity(0.4))
-                        .frame(width: 20, height: 20)
-                        .border(Color.black, width: 1)
-                }
-            }
-            // ...add controls for zoom, etc...
+//            Map(coordinateRegion: $region, annotationItems: Array(viewModel.exploredCells)) { cell in
+//                // Convert your grid cell to a coordinate
+//                let coord = viewModel.coordinate(for: cell)
+//                return MapAnnotation(coordinate: coord) {
+//                    Rectangle()
+//                        .fill(Color.green.opacity(0.4))
+//                        .frame(width: 20, height: 20)
+//                        .border(Color.black, width: 1)
+//                }
+//            }
+//            // ...add controls for zoom, etc...
+			MapPageView()
         }
     }
 }
