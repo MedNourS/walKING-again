@@ -2,29 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.maps.directionsrequest</string>
-			</array>
-		</dict>
-	</array>
+	<!-- Your existing keys -->
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string> <key>MKDirectionsApplicationSupportedModes</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+	<!-- Essential for "When In Use" location access -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is used to display your position on the map and track your walking progress.</string>
+
+	<!-- Essential if you need "Always" location access (even in background) -->
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location is used to track your walking activity even when the app is in the background.</string>
+
+	<!-- If you have MKDirections (for maps) -->
+	<key>MKDirectionsApplicationSupportedModes</key>
 	<array>
 		<string>MKDirectionsModeBike</string>
 		<string>MKDirectionsModePedestrian</string>
 	</array>
-
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is used to show nearby points of interest.</string>
-
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your location is used to provide real-time updates even when the app is in the background.</string>
-
+	<!-- ... other keys ... -->
 </dict>
 </plist>

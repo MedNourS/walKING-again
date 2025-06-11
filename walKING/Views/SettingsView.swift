@@ -1,29 +1,33 @@
 import SwiftUI
 
-enum UnitSystem: String, CaseIterable, Identifiable {
-    case metric = "Metric"
-    case imperial = "Imperial"
-    var id: String { self.rawValue }
-}
-
+/// Placeholder view for the "Settings" page.
 struct SettingsView: View {
-    @AppStorage("unitSystem") private var unitSystem: String = UnitSystem.metric.rawValue
-
-    var body: some View {
-        Form {
-            Section(header: Text("Units")) {
-                Picker("Unit System", selection: $unitSystem) {
-                    ForEach(UnitSystem.allCases) { unit in
-                        Text(unit.rawValue).tag(unit.rawValue)
-                    }
-                }
-                .pickerStyle(.segmented)
-            }
-        }
-        .navigationTitle("Settings")
-    }
+	var body: some View {
+		NavigationView {
+			VStack {
+				Image(systemName: "gearshape.fill")
+					.resizable()
+					.scaledToFit()
+					.frame(width: 100, height: 100)
+					.foregroundColor(.gray)
+					.padding()
+				Text("App Settings")
+					.font(.largeTitle)
+					.fontWeight(.bold)
+				Text("Customize your walKING experience.")
+					.font(.body)
+					.foregroundColor(.gray)
+					.multilineTextAlignment(.center)
+					.padding()
+				// Add actual settings options here later, e.g.,
+				// Toggle(isOn: .constant(true)) { Text("Enable Notifications") }
+			}
+			.navigationTitle("Settings")
+			.navigationBarTitleDisplayMode(.inline)
+		}
+	}
 }
 
 #Preview {
-    SettingsView()
+	SettingsView()
 }
