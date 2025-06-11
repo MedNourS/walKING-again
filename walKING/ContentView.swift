@@ -10,7 +10,23 @@ import CoreData
 
 struct ContentView: View {
     var body: some View {
-        MapView()
+        TabView {
+            StatisticsView()
+                .tabItem {
+                    Image(systemName: "chart.bar")
+                    Text("Statistics")
+                }
+            MapView()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Map")
+                }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Settings")
+                }
+        }
     }
 }
 
